@@ -1,4 +1,3 @@
-import { Button } from "@material-tailwind/react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -59,7 +58,8 @@ const Login = () => {
           </div>
           <input
             type="submit"
-            className="bg-blue-400 py-2 w-full text-white font-semibold rounded"
+            className="bg-blue-400 py-2 w-full text-white 
+            font-semibold rounded"
             value="Login"
           ></input>
         </form>
