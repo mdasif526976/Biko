@@ -1,18 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../AuthProvider/Authprovider";
+import { toast } from "react-toastify";
+import useTitle from "../../Custom Hooks/useTitle";
 
 const Signup = () => {
-  const { user, signUp } = useContext(UserContext);
-  console.log(user);
+  const { setUser, signUp, updateUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  useTitle("Signup");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const login = (data) => {
-    signUp(data.email, data.password);
+  const signup = (data) => {
+    signUp(data.email, data.password).then((result) => {
+      const user = result.user;
+      updateUser(data.name, data.image);
+      saveUser(data.email, data.name, data.type, data.image);
+      setUser(user);
+      console.log(user);
+      toast.success("sign up complate");
+      navigate("/");
+    });
+  };
+  const saveUser = (email, name, type, image) => {
+    const user = {
+      name: name,
+      email: email,
+      cart: [],
+      account: type,
+      isVarifed: false,
+      image: image,
+    };
+    console.log(user);
+    fetch("http://localhost:5000/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
   return (
     <div className="flex bg-blue-300 items-center justify-center  h-screen">
@@ -21,7 +51,7 @@ const Signup = () => {
           Signup Now
         </h1>
         <hr />
-        <form onSubmit={handleSubmit(login)} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit(signup)} className="flex flex-col gap-4">
           <div className="flex flex-col">
             <label className="font-semibold text-gray-700">Name</label>
             <input
@@ -34,6 +64,22 @@ const Signup = () => {
               <label>
                 <p className="font-semibold text-red-500">
                   {errors?.name?.message}
+                </p>
+              </label>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label className="font-semibold text-gray-700">Image Url</label>
+            <input
+              {...register("image", { required: "Enter your imageUrl" })}
+              type="text"
+              className="py-2 border-2 rounded px-1 outline-none border-blue-400 focus:border-[3px] focus:border-blue-500"
+              placeholder="Enter your imageUrl "
+            />
+            {errors.image && (
+              <label>
+                <p className="font-semibold text-red-500">
+                  {errors?.image?.message}
                 </p>
               </label>
             )}
