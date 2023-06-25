@@ -67,11 +67,11 @@ const Review = () => {
               </svg>
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-400 dark:text-gray-900">
+          <div className="flex flex-col items-center justify-center p-8 rounded-b-lg ">
             <img
               src="https://source.unsplash.com/100x100/?portrait?2"
               alt=""
-              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-700"
+              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full "
             />
             <p className="text-xl font-semibold leadi">Atano Bines</p>
             <p className="text-sm uppercase">Aliquam illum</p>
@@ -106,7 +106,7 @@ const Review = () => {
             <img
               src="https://source.unsplash.com/100x100/?portrait?2"
               alt=""
-              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-700"
+              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full "
             />
             <p className="text-xl font-semibold leadi">Josef karini</p>
             <p className="text-sm uppercase">Aliquam illum</p>
@@ -141,7 +141,7 @@ const Review = () => {
             <img
               src="https://source.unsplash.com/100x100/?portrait?2"
               alt=""
-              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-700"
+              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full "
             />
             <p className="text-xl font-semibold leadi">John Animi</p>
             <p className="text-sm uppercase">Aliquam illum</p>
