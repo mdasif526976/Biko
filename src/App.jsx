@@ -4,6 +4,9 @@ import Main from "./Layout/Main";
 import Login from "./Pages/Authentication/Login";
 import Signup from "./Pages/Authentication/Signup";
 import Home from "./Pages/Home/Home";
+import Dashboard from "./Layout/Dashboard/Dashboard";
+import AddProductPage from "./Pages/SellerPages/AddProductPage";
+import SellerAllProduct from "./Pages/SellerPages/SellerAllProduct/SellerAllProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +25,32 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard/sellers",
+        element: <p>from sellers</p>,
+      },
+      {
+        path: "/dashboard/users",
+        element: <p>from add user</p>,
+      },
+      {
+        path: "/dashboard/reportIteams",
+        element: <p>from add user</p>,
+      },
+      {
+        path: "/dashboard/products",
+        element: <SellerAllProduct />,
+      },
+      {
+        path: "/dashboard/addProduct",
+        element: <AddProductPage />,
+      },
+    ],
   },
 ]);
 const App = () => {

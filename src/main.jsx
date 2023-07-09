@@ -5,7 +5,8 @@ import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import Authprovider from "./AuthProvider/Authprovider.jsx";
 import { ToastContainer } from "react-toastify";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ToastContainer
@@ -21,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       theme="light"
     />
     <Authprovider>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </Authprovider>
   </React.StrictMode>
 );
